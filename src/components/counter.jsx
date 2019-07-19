@@ -3,34 +3,29 @@ import React, { Component } from "react"; // si ponemos imrc: Import React Compo
 class Counter extends Component {
   // si ponemos cc, Create class
   state = {
-    count: 0, 
-    tags: ['España','Francia', 'Portugal']
+    count: 0,
+    tags: []
   };
+
+  renderTags() {
+    if (this.state.tags.length === 0) return <p>There are no tags!</p>;
+    return (
+      <ul>
+        {this.state.tags.map(tag => <li key={tag}>{tag}</li>)}
+      </ul>
+    );
+  }
 
   render() {
     return (
       // {this.state.count} dinamic changes// m-2 : margen 2 espacios// btn-sm diminutivo de small
       // a la hora de meter stilos podemos hacerlo de diferentes formas, {this.styles} o {{fontSize: 30}}
       <div>
-        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
-        <ul>
-        {this.state.tags.map(tag => <li key={tag}>{ tag }</li>)}
-        </ul>
+        {this.state.tags.length === 0 && "Please create a new tag!"}
+        {this.renderTags()}
       </div>
     );
   }
-
-  getBadgeClasses() {
-    let classes = "badge m-2 badge-";
-    classes += this.state.count === 0 ? "warning" : "primary";
-    return classes;
-  }
-
-  formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
-  }
-}
+} 
 
 export default Counter;
