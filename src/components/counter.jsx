@@ -11,12 +11,16 @@ class Counter extends Component {
       // {this.state.count} dinamic changes// m-2 : margen 2 espacios// btn-sm diminutivo de small
       // a la hora de meter stilos podemos hacerlo de diferentes formas, {this.styles} o {{fontSize: 30}}
       <div>
-        <span style={{ fontSize: 30 }} className="badge badge-primary m-2">
-          {this.formatCount()}
-        </span>
+        <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm">Increment</button>
       </div>
     );
+  }
+
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
   }
 
   formatCount() {
