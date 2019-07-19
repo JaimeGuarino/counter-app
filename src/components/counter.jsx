@@ -8,13 +8,17 @@ class Counter extends Component {
 
   render() {
     return (
-      // {this.state.count} dinamic changes
+      // {this.state.count} dinamic changes// m-2 : margen 2 espacios// btn-sm diminutivo de small
+      // a la hora de meter stilos podemos hacerlo de diferentes formas, {this.styles} o {{fontSize: 30}}
       <div>
-        <span>{this.formatCount()}</span>
-        <button>Increment</button>
+        <span style={{ fontSize: 30 }} className="badge badge-primary m-2">
+          {this.formatCount()}
+        </span>
+        <button className="btn btn-secondary btn-sm">Increment</button>
       </div>
     );
   }
+
   formatCount() {
     const { count } = this.state;
     return count === 0 ? "Zero" : count;
