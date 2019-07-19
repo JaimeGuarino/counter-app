@@ -2,15 +2,23 @@ import React, { Component } from "react"; // si ponemos imrc: Import React Compo
 
 class Counter extends Component {
   // si ponemos cc, Create class
+  state = {
+    count: 0
+  };
 
   render() {
     return (
-      <React.Fragment>
-        <h1>Hello World</h1>
+      // {this.state.count} dinamic changes
+      <div>
+        <span>{this.formatCount()}</span>
         <button>Increment</button>
-      </React.Fragment>
+      </div>
     );
-  }ñllll
+  }
+  formatCount() {
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
+  }
 }
 
 export default Counter;
