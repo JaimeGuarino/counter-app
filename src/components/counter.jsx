@@ -3,7 +3,8 @@ import React, { Component } from "react"; // si ponemos imrc: Import React Compo
 class Counter extends Component {
   // si ponemos cc, Create class
   state = {
-    count: 0
+    count: 0, 
+    tags: ['España','Francia', 'Portugal']
   };
 
   render() {
@@ -13,6 +14,9 @@ class Counter extends Component {
       <div>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button className="btn btn-secondary btn-sm">Increment</button>
+        <ul>
+        {this.state.tags.map(tag => <li key={tag}>{ tag }</li>)}
+        </ul>
       </div>
     );
   }
