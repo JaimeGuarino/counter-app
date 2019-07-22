@@ -2,16 +2,20 @@ import React, { Component } from "react"; // si ponemos imrc: Import React Compo
 
 class Counter extends Component {
   // si ponemos cc, Create class
-  state = {
-    count: 0
+  state = {  //es de la clase component y en ella se declaran las variables que haran falta
+    count: 0 
   };
 
+
+
   render() {
+
+    let classes = this.getBadgeClasses();
+
+
     return (
-      // {this.state.count} dinamic changes// m-2 : margen 2 espacios// btn-sm diminutivo de small
-      // a la hora de meter stilos podemos hacerlo de diferentes formas, {this.styles} o {{fontSize: 30}}
       <div>
-        <span style={{ fontSize: 30 }} className="badge badge-primary m-2">
+        <span className={this.getBadgeClasses()}>
           {this.formatCount()}
         </span>
         <button className="btn btn-secondary btn-sm">Increment</button>
@@ -19,9 +23,15 @@ class Counter extends Component {
     );
   }
 
+  getBadgeClasses() {
+    let classes = "badge m-2 badge-";
+    classes += this.state.count === 0 ? "warning" : "primary";
+    return classes;
+  }
+
   formatCount() {
-    const { count } = this.state;
-    return count === 0 ? "Zero" : count;
+    const { count } = this.state;  //separacion de elementos del struct
+    return count === 0 ? "Zero" : count; //0-->pones zero; != ponemos Contador
   }
 }
 
