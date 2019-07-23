@@ -3,6 +3,7 @@ import Counter from './counter';
 
 
 class Counters extends Component {  //escribiendo cc
+    
     state = { 
         counters: [
             {id:1, value: 4},
@@ -13,8 +14,11 @@ class Counters extends Component {  //escribiendo cc
 
      }
 
-     handleDelete = () =>{
-         console.log('Event Handle Called');
+     handleDelete = (counterId) =>{
+         //console.log('Event Handle Called',counterId);
+         const counters = this.state.counters.filter(c => c.id !== counterId);
+         //filer crea un nuevo array con todos los elementos que cumplan con la condicion implementada
+         this.setState({counters: counters})
      }
 
 
@@ -22,7 +26,7 @@ class Counters extends Component {  //escribiendo cc
         return ( 
          <div>
             {this.state.counters.map(counter =>(
-                 <Counter key={counter.id} onDelete={this.handleDelete} value= {counter.value} selected={true} id={counter.id} >
+                 <Counter counter= {counter} key={counter.id} onDelete={this.handleDelete} value= {counter.value} selected={true} id={counter.id} >
                  </Counter>
 
             ))}

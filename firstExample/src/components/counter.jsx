@@ -1,11 +1,13 @@
 import React, { Component } from "react"; // si ponemos imrc: Import React Components, acronimo, sale directamente esta línea
 
 class Counter extends Component {
+
+
   constructor(props){
     super(props);
     // si ponemos cc, Create class
     this.state = {  //es de la clase component y en ella se declaran las variables que haran falta
-      count: this.props.value ,
+      count: this.props.counter.value ,
       tags: ['tag1', 'tag2', 'tag3']
     };
     this.handleIncrement = this.handleIncrement.bind(this);
@@ -37,7 +39,7 @@ class Counter extends Component {
           >Increment
         </button>
         <button 
-          onClick ={this.props.onDelete}
+          onClick ={() => this.props.onDelete(this.props.counter.id)}
           className="btn btn-danger btn-sm m-2"> Delete
         </button>
 
