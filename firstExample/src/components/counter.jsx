@@ -1,14 +1,13 @@
 import React, { Component } from "react"; // si ponemos imrc: Import React Components, acronimo, sale directamente esta línea
 
 class Counter extends Component {
-  // si ponemos cc, Create class
-  state = {  //es de la clase component y en ella se declaran las variables que haran falta
-    count: 0 ,
-    tags: ['tag1', 'tag2', 'tag3']
-  };
-
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    // si ponemos cc, Create class
+    this.state = {  //es de la clase component y en ella se declaran las variables que haran falta
+      count: this.props.value ,
+      tags: ['tag1', 'tag2', 'tag3']
+    };
     this.handleIncrement = this.handleIncrement.bind(this);
   }
 
@@ -18,14 +17,19 @@ class Counter extends Component {
 
   }
 
+  
+
   handleIncrement(){
     this.setState({count: this.state.count + 1})  //incrementa el contador
   }
 
 
   render() {
+    console.log(this.props);
+    console.log("props",this.props) //propos es un atributo que tienen la clase componente por defecto
     return (
       <div>
+        <h4>{this.props.id}</h4>
         <span className= {this.getBadgeClasses()}>{this.formatCount()}</span>
         <button 
         onClick = {this.handleIncrement}
@@ -48,8 +52,6 @@ class Counter extends Component {
     const{ count} = this.state;
     return count === 0 ? 'Zero' : count;
   }
-
-  
 }
 
 export default Counter;
