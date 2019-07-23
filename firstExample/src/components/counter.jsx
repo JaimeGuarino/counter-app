@@ -19,7 +19,7 @@ class Counter extends Component {
   }
 
   handleIncrement(){
-    this.setState({count: this.state.count + 1})  //incrementa el contadorn
+    this.setState({count: this.state.count + 1})  //incrementa el contador
   }
 
 
@@ -28,6 +28,7 @@ class Counter extends Component {
       <div>
         <span className= {this.getBadgeClasses()}>{this.formatCount()}</span>
         <button 
+        onClick = {this.handleIncrement}
         className= "btn btn-secondary btn-sm"
         >Increment
         </button>
@@ -44,7 +45,7 @@ class Counter extends Component {
   }
 
   formatCount(){
-    const{ count} = this.setState;
+    const{ count} = this.state;
     return count === 0 ? 'Zero' : count;
   }
 
