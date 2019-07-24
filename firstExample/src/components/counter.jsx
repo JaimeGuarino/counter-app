@@ -2,6 +2,18 @@ import React, { Component } from "react"; // si ponemos imrc: Import React Compo
 
 class Counter extends Component {
 
+
+componentDidUpdate(prevProps, prevState){
+
+  if(prevProps.counter.value !== this.props.counter.value){
+    //Ajax call and get new data from the server
+    //esta funcion te guarda lo que había anteriormente en el DOM,
+    //se utiliza para hacer llamadas al servidor y demás
+
+  }
+}
+
+
   render() {
     console.log(this.props);
     console.log("props",this.props) //propos es un atributo que tienen la clase componente por defecto
