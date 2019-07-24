@@ -44,6 +44,17 @@ render(){
 
  }
 
+ handleDecrement= counter => {
+
+  const counters = [... this.state.counters]; //hacemos una copia completa del array
+  const index = counters.indexOf(counter); //se coge el indice del contador para asi saber cual cambiar 
+  counters[index] = {...counter}; //se hace un array solo con el contador que se ha modificado
+  counters[index].value--; //se le incrementa una unidad por ser el pulsado
+  this.setState({counters});
+
+}
+
+
  handleReset = () => {
 
     const counters = this.state.counters.map(c => {
@@ -70,6 +81,7 @@ render(){
             counters = {this.state.counters}
             onReset={this.handleReset}
             onIncrement= {this.handleIncrement}
+            onDecrement= {this.handleDecrement}
             onDelete={this.handleDelete}
             />
 

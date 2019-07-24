@@ -17,6 +17,7 @@ class Counters extends Component {  //escribiendo cc
                   key={counter.id}
                   onDelete={this.props.onDelete}
                   onIncrement= {this.props.onIncrement}
+                  onDecrement= {this.props.onDecrement}
                   value= {counter.value}
                   selected={true}
                   id={counter.id} >
