@@ -1,7 +1,7 @@
 import React, { Component } from "react"; // si ponemos imrc: Import React Components, acronimo, sale directamente esta línea
 
 class Counter extends Component {
-  renderTags() {
+  /*renderTags() {
     if (this.state.tags.lenght === 0) return <p> There are no tags!</p>;
     return (
       <ul>
@@ -11,7 +11,7 @@ class Counter extends Component {
       </ul>
     );
   }
-
+*/
   render() {
     console.log(this.props);
     console.log("props", this.props); //propos es un atributo que tienen la clase componente por defecto
