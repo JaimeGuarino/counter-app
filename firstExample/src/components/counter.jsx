@@ -3,7 +3,15 @@ import React, { Component } from "react"; // si ponemos imrc: Import React Compo
 class Counter extends Component {
   constructor(props) {
     super(props);
+    // si ponemos cc, Create class
+    this.state = {
+      //es de la clase component y en ella se declaran las variables que haran falta
+      count: this.props.counter.value,
+      tags: ["tag1", "tag2", "tag3"]
+    };
+    this.handleIncrement = this.handleIncrement.bind(this);
   }
+
   renderTags() {
     if (this.state.tags.lenght === 0) return <p> There are no tags!</p>;
     return (
@@ -15,6 +23,10 @@ class Counter extends Component {
     );
   }
 
+  handleIncrement() {
+    this.setState({ count: this.state.count + 1 }); //incrementa el contador
+  }
+
   render() {
     console.log(this.props);
     console.log("props", this.props); //propos es un atributo que tienen la clase componente por defecto
@@ -23,7 +35,7 @@ class Counter extends Component {
         <h4>{this.props.id}</h4>
         <span className={this.getBadgeClasses()}>{this.formatCount()}</span>
         <button
-          onClick={() => this.props.onIncrement(this.props.counter)}
+          onClick={this.handleIncrement}
           className="btn btn-secondary btn-sm"
         >
           Increment
@@ -41,13 +53,13 @@ class Counter extends Component {
 
   getBadgeClasses() {
     let classes = "Badge m-2 badge-";
-    classes += this.props.counter.value === 0 ? "warning" : "primary";
+    classes += this.state.count === 0 ? "warning" : "primary";
     return classes;
   }
 
   formatCount() {
-    const { value } = this.props.counter;
-    return value === 0 ? "Zero" : value;
+    const { count } = this.state;
+    return count === 0 ? "Zero" : count;
   }
 }
 
